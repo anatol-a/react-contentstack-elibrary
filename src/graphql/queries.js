@@ -13,6 +13,58 @@ export const HEADER = gql`
   }
 `;
 
+export const GET_HEADER = gql`
+    query GetHeader {
+        all_header {
+            items {
+                logoConnection {
+                    edges {
+                        node {
+                            url
+                            title
+                        }
+                    }
+                }
+                menu {
+                    url {
+                        href
+                    }
+                    title
+                }
+            }
+        }
+        
+    }
+`;
+
+export const GET_FOOTER = gql`
+    query GetFooter {
+        all_footer {
+            items {
+                copyright
+                logoConnection {
+                    edges {
+                        node {
+                            url
+                        }
+                    }
+                }
+                socials {
+                    iconConnection {
+                        edges {
+                            node {
+                                url
+                            }
+                        }
+                    }
+                    title
+                    url
+                }
+            }
+        }
+    }
+`;
+
 export const GET_ALL_BOOKS = gql`
   query GetAllBooks {
     all_book {
