@@ -23,7 +23,7 @@ export default function Header({ header, navMenu }) {
           <nav>
             <ul className="main-nav">
               <li className="main-nav__item"><a href="#">Home</a></li>
-              <li className="main-nav__item"><a href="#">Books</a></li>
+              <li className="main-nav__item"><a href="/books">Books</a></li>
               <li className="main-nav__item"><a href="#">Some</a></li>
             </ul>
           </nav>

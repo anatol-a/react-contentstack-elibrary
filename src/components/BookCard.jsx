@@ -9,7 +9,7 @@ export default function BookCard({ book, version }) {
     <Link to={ url } className="book-card">
       <div className="book-card__cover book-cover">
         { coverUrl ? (
-          <img src={ coverUrl } alt={ title } className="book-cover__img"/>
+          <img src={`${coverUrl}?width=124`} alt={ title } className="book-cover__img"/>
         ) : (
           <span className="book-cover__placeholder">Awaiting cover <br/> image</span>
         )}

@@ -1,0 +1,17 @@
+.page-footer {
+  margin-top: auto;
+  background-color: var(--accent-darl-color);
+  color: #ffffff;
+  padding: 40px 0;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.footer-copyright {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
