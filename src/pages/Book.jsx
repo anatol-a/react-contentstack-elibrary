@@ -13,7 +13,7 @@ export default function Book(props) {
           <span>Go back</span>
         </button>
 
-        <BookDetails book={book} />
+        <BookDetails />
       </div>
     </section>
   );

@@ -1,9 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Books from "./pages/Books";
 import Book from "./pages/Book";
 import Error from "./pages/Error";
+
+import "react-loading-skeleton/dist/skeleton.css";
+import './styles/app.scss';
 
 function App() {
   return (
