@@ -1,16 +1,23 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_HEADER } from '../graphql/queries';
 import Skeleton from 'react-loading-skeleton';
+import { useLayoutEffect, useState } from 'react';
 
 export default function Header() {
+  const location = useLocation();
+  const [burgerMenuOpened, setBurgerMenuOpened] = useState(false)
   const { loading, error, data } = useQuery(GET_HEADER);
   const header = data?.all_header?.items[0];
   const logo = header?.logoConnection?.edges[0]?.node;
   const menu = header?.menu;
 
+  useLayoutEffect(() => {
+    setBurgerMenuOpened(false)
+  }, [location])
+
   return (
-    <header className="page-header">
+    <header className="page-header" id="page-header">
       <div className="container container--lg">
         <div className="page-header__content">
           <div className="site-logo">
@@ -28,8 +35,16 @@ export default function Header() {
               </Link>
             )}
           </div>
-          <nav>
-            <ul className="main-nav">
+
+          <button
+            className="burger-menu-btn"
+            onClick={() => setBurgerMenuOpened(prev => !prev)}
+          >
+            <span className="burger-menu-btn__inner"></span>
+          </button>
+
+          <nav className={'main-nav' + (burgerMenuOpened ? ' main-nav--mobile-opened' : '')}>
+            <ul className="main-nav__list">
               { loading && (
                 <Skeleton width={300} height={20} />
               )}
