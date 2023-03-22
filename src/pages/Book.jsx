@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import { getBookRes } from '../helpers/indes';
 import Skeleton from 'react-loading-skeleton';
 
-export default function BookSdk(props) {
+export default function Book() {
   const navigate = useNavigate();
-  const { bookUrl } = useParams();
-  const [book, setBook] = useState({})
+  const history = useNavigate();
+  const { bookUrl, locale } = useParams();
+  const [book, setBook] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -15,11 +16,10 @@ export default function BookSdk(props) {
     try {
       setLoading(true);
       const entryUrl = bookUrl ? `/books/${bookUrl}` : "/";
-      const bookRes = await getBookRes(entryUrl);
-      console.log('bookRes - ',bookRes)
+      const bookRes = await getBookRes(entryUrl, locale);
       !bookRes && setError(true);
       setLoading(false);
-      setBook( bookRes );
+      setBook(bookRes);
     } catch (error) {
       console.error(error);
       setError(true);
@@ -29,9 +29,12 @@ export default function BookSdk(props) {
 
   useEffect(() => {
     fetchData();
+    error && history("/404");
   }, [bookUrl, error]);
 
-  // document.title = 'My Page Title';
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [loading]);
 
   return (
     <section className="book-details-section">
@@ -41,7 +44,7 @@ export default function BookSdk(props) {
           <span>Go back</span>
         </button>
 
-        { loading && (
+        {loading && (
           <div className="book-details__cols">
             <div className="book-details__cover">
               <Skeleton height={600} />
@@ -63,11 +66,11 @@ export default function BookSdk(props) {
           </div>
         )}
 
-        { (book && !loading) &&  (
+        {(book && !loading) &&  (
           <BookDetails book={book} />
         )}
 
-        { error && (
+        {error && (
           <p>ERROR: {error.message}</p>
         )}
       </div>

@@ -57,6 +57,8 @@ a {
 }
 
 p {
+  margin: 0 0 1em;
+
   a {
     color: var(--accent-color);
     font-weight: 500;
@@ -83,7 +85,7 @@ p {
 }
 
 section {
-  padding: 40px 0;
+  padding: 50px 0;
 }
 
 h1, .h1,
@@ -92,7 +94,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin: 0 0 0.8em;
+  margin: 0 0 0.6em;
   font-family: var(--accent-font);
   padding: 0;
   font-weight: 600;
@@ -112,11 +114,12 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 h5, .h5 {
   font-size: 1.8rem;
+  margin-bottom: 0.8em;
 }
 
 .btn {
@@ -128,13 +131,36 @@ h5, .h5 {
   text-transform: uppercase;
   background-color: var(--accent-color);
   color: #ffffff;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--accent-darl-color);
     color: #ffffff;
   }
+
+  &--light {
+    background-color: var(--gray-color);
+    color: var(--base-text-color);
+
+    &:hover {
+      background-color: var(--accent-color);
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 .text-center {
   text-align: center;
+}
+
+.accent-font {
+  font-family: var(--accent-font);
+}
+
+.base-font {
+  font-family: var(--main-font);
 }

@@ -1,5 +1,3 @@
-// import parse from "html-react-parser";
-// import * as Contentstack from 'contentstack';
 import parse from 'html-react-parser';
 import BookCard from './BookCard';
 import { useEffect } from 'react';
@@ -18,15 +16,13 @@ export default function BookDetails({ book }) {
     seo
   } = book;
 
-  console.log('relatedBooks - ',relatedBooks)
-
   const coverUrl = cover?.url;
   const authorName = author?.author?.[0]?.title;
   let descriptionParsed = "";
 
-  if (description) {
+  if (description.value) {
     try {
-      descriptionParsed = parse(description.value)
+      descriptionParsed = parse(description.value);
     } catch (e) {
       console.error(e)
     }
@@ -57,63 +53,63 @@ export default function BookDetails({ book }) {
         <div className="book-details__cols">
           <div className="book-details__cover book-cover">
             { coverUrl ? (
-              <img src={ coverUrl } alt={ title } className="book-cover__img"/>
+              <img src={coverUrl} alt={title} className="book-cover__img"/>
             ) : (
               <span className="book-cover__placeholder">Awaiting cover <br/> image</span>
             )}
           </div>
           <div className="book-details__info">
-            <h1 className="book-details__title">{ title }</h1>
+            <h1 className="book-details__title">{title}</h1>
 
-            { authorName && (
+            {authorName && (
               <div className="book-details__row">
-                <span className="book-details__row-title">Author</span>
-                <span className="book-details__row-data">{ authorName }</span>
+                <span className="book-details__row-title">{author.title}</span>
+                <span className="book-details__row-data">{authorName}</span>
               </div>
             )}
 
-            { isbn && (
+            {isbn && (
               <div className="book-details__row">
                 <span className="book-details__row-title">ISBN</span>
-                <span className="book-details__row-data">{ isbn }</span>
+                <span className="book-details__row-data">{isbn}</span>
               </div>
             )}
 
-            { rating && (
+            {rating && (
               <div className="book-details__row">
-                <span className="book-details__row-title">{ rating.title }</span>
+                <span className="book-details__row-title">{rating.title}</span>
                 <div className="star-rating" style={{ '--rating': rating.value }}></div>
               </div>
             )}
 
-            { numPages && (
+            {numPages && (
               <div className="book-details__row">
                 <span className="book-details__row-title">{ numPages.title }</span>
                 <span className="book-details__row-data">{ numPages.value }</span>
               </div>
             )}
 
-            { linkToBook && (
-              <a className="btn" href={linkToBook.href} target="_blank">{ linkToBook.title }</a>
+            {linkToBook && (
+              <a className="btn" href={linkToBook.href} target="_blank" rel="noreferrer">{linkToBook.title}</a>
             )}
           </div>
         </div>
 
-        { descriptionParsed && (
+        {descriptionParsed && (
           <div className="book-details__desc book-desc">
-            <h2 className="book-desc__title text-center h3">{ description.title }</h2>
+            <h2 className="book-desc__title text-center h3">{description.title}</h2>
             <div className="book-desc__text">
-              { descriptionParsed }
+              {descriptionParsed}
             </div>
           </div>
         )}
       </div>
 
-      { relatedBooks.books.length ? (
+      {relatedBooks?.books?.length ? (
         <div className="related-books">
           <h2 className="text-center h3">{ relatedBooks.title }</h2>
           <div className="related-books__list">
-            { relatedBooks.books.map(book => <BookCard book={book} key={book.title} version="sdk" />) }
+            {relatedBooks.books.map(book => <BookCard book={book} key={book.title} version="sdk" />) }
           </div>
         </div>
       ) : (<></>)}

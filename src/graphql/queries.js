@@ -1,18 +1,5 @@
 import { gql } from "@apollo/client";
 
-export const HEADER = gql`
-  query {
-    header {
-      items {
-        title
-        home_link {
-          href
-        }
-      }
-    }
-  }
-`;
-
 export const GET_HEADER = gql`
     query GetHeader {
         all_header {
@@ -66,33 +53,35 @@ export const GET_FOOTER = gql`
 `;
 
 export const GET_ALL_BOOKS = gql`
-  query GetAllBooks {
-    all_book {
-      items {
-        title
-        coverConnection {
-          edges {
-            node {
-              url
-            }
-          }
-        }
-        author {
-          authorConnection {
-            edges {
-              node {
-                ... on Author {
-                  title
+    query GetAllBooks($limit: Int, $skip: Int) {
+        all_book(limit: $limit, skip: $skip) {
+            items {
+                title
+                coverConnection {
+                    edges {
+                        node {
+                            url
+                        }
+                    }
                 }
-              }
+                author {
+                    authorConnection {
+                        edges {
+                            node {
+                                ... on Author {
+                                    title
+                                }
+                            }
+                        }
+                    }
+                }
+                url
             }
-          }
+            total
         }
-        url
-      }
     }
-  }
 `;
+
 
 export const GET_BOOK_BY_URL = gql`
   query GetBookByUrl($url: String) {

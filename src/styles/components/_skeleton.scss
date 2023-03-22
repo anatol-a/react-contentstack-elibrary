@@ -1,0 +1,12 @@
+.skeleton-book-card {
+  & > span:first-of-type {
+    display: block;
+    margin-bottom: 8px;
+
+    .react-loading-skeleton {
+      @media (max-width: $sm) {
+        height: 218px !important;
+      }
+    }
+  }
+}

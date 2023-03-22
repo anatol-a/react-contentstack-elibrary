@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
+import Index from "./pages";
 import Books from "./pages/Books";
 import Book from "./pages/Book";
 import Error from "./pages/Error";
@@ -12,10 +12,12 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<Index />} />
+        <Route path=":page" element={<Index />} />
         <Route path="books" element={<Books />} />
-        <Route path="books/:bookUrl" element={<Book />} />
-        <Route path="*" element={<Error />} />
+        <Route path=":locale?/books/:bookUrl" element={<Book />} />
+        <Route path="404" element={<Error />}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Route>
     </Routes>
   );

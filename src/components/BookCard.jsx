@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function BookCard({ book, version }) {
+export default function SkeletonBookCard({ book, version }) {
   const { url, title, coverConnection, author, cover } = book;
   const coverUrl = (version === "sdk") ? cover?.url : coverConnection?.edges[0]?.node?.url;
   const authorName = (version === "sdk") ? author?.author?.[0]?.title : author?.authorConnection?.edges[0]?.node?.title;

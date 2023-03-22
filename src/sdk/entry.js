@@ -9,7 +9,6 @@ const Stack = contentstack.Stack({
   environment: process.env.REACT_APP_ENVIRONMENT,
 });
 
-
 const renderOption = {
   // to render Supercharged RTE NodeType content like paragraph, link, table, order list, un-order list and more.
   p: (node, next) => {
@@ -102,10 +101,10 @@ export default {
    * @returns
    */
   // getEntryByUrl({ contentTypeUid, entryUrl, referenceFieldPath, jsonRtePath, locale }) {
-  getEntryByUrl({ contentTypeUid, entryUrl, referenceFieldPath, jsonRtePath }) {
+  getEntryByUrl({ contentTypeUid, entryUrl, referenceFieldPath, jsonRtePath, locale }) {
     return new Promise((resolve, reject) => {
       const bookQuery = Stack.ContentType(contentTypeUid).Query();
-      // locale && bookQuery.language(locale);
+      locale && bookQuery.language(locale);
       referenceFieldPath && bookQuery.includeReference(referenceFieldPath);
       bookQuery.includeOwner().toJSON();
       const data = bookQuery.where("url", `${entryUrl}`).find();
