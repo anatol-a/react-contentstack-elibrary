@@ -45,7 +45,10 @@ export const GET_FOOTER = gql`
                         }
                     }
                     title
-                    url
+                    url {
+                        title
+                        href
+                    }
                 }
             }
         }

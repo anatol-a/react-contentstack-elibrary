@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_FOOTER } from '../graphql/queries';
 import Skeleton from 'react-loading-skeleton';
@@ -6,6 +6,7 @@ import SocialLinkIcon from './SocialLinkIcon';
 
 export default function Footer() {
   const { loading, error, data } = useQuery(GET_FOOTER);
+  console.log('data - ', data);
   const footer = data?.all_footer?.items[0];
   const logo = footer?.logoConnection?.edges[0]?.node;
   const socials = footer?.socials;
@@ -15,11 +16,11 @@ export default function Footer() {
       <div className="container container--lg">
         <div className="page-footer__cols">
           <div className="site-logo">
-            { loading && (
+            {loading && (
               <Skeleton width={60} height={60} />
             )}
 
-            { logo && (
+            {logo && (
               <Link to='/' title='ELibrary logo'>
                 <img
                   className='site-logo__img'
@@ -29,11 +30,16 @@ export default function Footer() {
               </Link>
             )}
           </div>
-          <span className="footer-copyright">{ footer?.copyright }</span>
-          <div className="footer-socials">
-            { socials?.length && (
-              socials?.map((socialLink) => <SocialLinkIcon key={socialLink.title} socialLink={socialLink} />)
+          <span className="footer-copyright">
+            {loading && (
+              <Skeleton width={60} height={60} />
             )}
+            {footer?.copyright}
+          </span>
+          <div className="footer-socials">
+            {socials?.length ? (
+              socials?.map((socialLink) => <SocialLinkIcon key={socialLink.title} socialLink={socialLink} />)
+            ) : (<></>)}
           </div>
         </div>
       </div>
