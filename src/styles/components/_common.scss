@@ -47,7 +47,7 @@
 .star-rating {
   --star-size: 20px;
   --star-color: #aaa;
-  --star-background: var(--accent-darl-color);
+  --star-background: var(--accent-dark-color);
   --percent: calc(var(--rating) / 5 * 100%);
 
   display: inline-block;

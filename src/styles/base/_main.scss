@@ -64,7 +64,7 @@ p {
     font-weight: 500;
 
     &:hover {
-      color: var(--accent-darl-color);
+      color: var(--accent-dark-color);
     }
 
   }
@@ -81,6 +81,10 @@ p {
 
   &--md {
     --container-width: 1000px;
+  }
+
+  &--sm {
+    --container-width: 800px;
   }
 }
 
@@ -134,7 +138,7 @@ h5, .h5 {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--accent-darl-color);
+    background-color: var(--accent-dark-color);
     color: #ffffff;
   }
 

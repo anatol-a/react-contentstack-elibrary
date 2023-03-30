@@ -7,6 +7,7 @@ import Error from "./pages/Error";
 
 import "react-loading-skeleton/dist/skeleton.css";
 import './styles/app.scss';
+import Authors from './pages/Authors';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path=":page" element={<Index />} />
         <Route path="books" element={<Books />} />
         <Route path=":locale?/books/:bookUrl" element={<Book />} />
+        <Route path="authors" element={<Authors />} />
         <Route path="404" element={<Error />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Route>

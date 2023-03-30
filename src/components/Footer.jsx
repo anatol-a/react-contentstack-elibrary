@@ -6,7 +6,6 @@ import SocialLinkIcon from './SocialLinkIcon';
 
 export default function Footer() {
   const { loading, error, data } = useQuery(GET_FOOTER);
-  console.log('data - ', data);
   const footer = data?.all_footer?.items[0];
   const logo = footer?.logoConnection?.edges[0]?.node;
   const socials = footer?.socials;

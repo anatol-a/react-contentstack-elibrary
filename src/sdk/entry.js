@@ -100,7 +100,6 @@ export default {
    * @param {* locale} locale
    * @returns
    */
-  // getEntryByUrl({ contentTypeUid, entryUrl, referenceFieldPath, jsonRtePath, locale }) {
   getEntryByUrl({ contentTypeUid, entryUrl, referenceFieldPath, jsonRtePath, locale }) {
     return new Promise((resolve, reject) => {
       const bookQuery = Stack.ContentType(contentTypeUid).Query();

@@ -1,7 +1,7 @@
 import BookDetails from '../components/BookDetails';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getBookRes } from '../helpers/indes';
+import { getBookRes } from '../helpers/contentstackRequests';
 import Skeleton from 'react-loading-skeleton';
 
 export default function Book() {

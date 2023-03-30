@@ -1,0 +1,79 @@
+.author {
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+
+  @media (min-width: $sm) {
+    grid-template-columns: 250px 1fr;
+    grid-gap: 50px;
+  }
+
+  &__info {
+    position: relative;
+  }
+
+  &__photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    display: block;
+    padding-right: 40px;
+    margin-bottom: 10px;
+    font: 500 20px var(--accent-font);
+  }
+
+  &__bio {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  &__favorite {
+    position: absolute;
+    top: -3px;
+    right: 0;
+    display: inline-block;
+    font-size: 24px;
+    line-height: 1.1;
+    cursor: pointer;
+    --star-color: #aaa;
+
+    &::before {
+      content: "★";
+      background: var(--star-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &--active {
+      --star-color: var(--accent-color);
+    }
+  }
+
+  & + & {
+    border-top: 1px solid #e3e3e3;
+  }
+}
+
+.author-books {
+  margin: 20px 0 0;
+
+  &__title {
+    margin: 0 0 10px;
+  }
+
+  &__item {
+    list-style: circle inside;
+  }
+}

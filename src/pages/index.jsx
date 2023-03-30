@@ -1,7 +1,7 @@
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getPageRes } from '../helpers/indes';
+import { getPageRes } from '../helpers/contentstackRequests';
 import RenderComponents from '../components/RenderComponents';
 import Skeleton from 'react-loading-skeleton';
 

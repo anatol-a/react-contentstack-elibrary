@@ -1,13 +1,12 @@
 .page-footer {
   margin-top: auto;
-  background-color: var(--accent-darl-color);
+  background-color: var(--accent-dark-color);
   color: #ffffff;
   padding: 30px 0;
 
   @media (min-width: $md) {
     padding: 20px 0;
   }
-
 
   &__cols {
     display: grid;
